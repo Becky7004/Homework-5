@@ -52,7 +52,7 @@ ggplot(monthly_homicides, aes(x = reported_date_month,
            lineheight = 0.9, size = 4)+
   labs(x = "Date", y ="Monthly homicides", title = "Homicides in Baltimore, MD")+
   theme_dark()+
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom", legend.title = element_blank())
 ```
 
 

@@ -37,8 +37,14 @@ ggplot(baltimore_homicides, aes(x = reported_date_month, fill = season))+
   geom_bar()+
   scale_fill_manual(values = c("Winter" = "lightskyblue2",
       "Summer" = "gray"))+
-  geom_vline(xintercept = as.Date("2015-04-01"), linetype = "dashed", color = "red", linewidth = 1)+
-  theme_dark()
+  geom_vline(xintercept = as.Date("2015-04-01"), linetype = "dashed", 
+             color = "red",linewidth = 1)+
+  annotate("text", x = as.Date("2015-04-01"), 
+           y = max(baltimore_homicides$count), 
+           label = "Arrest of Freddie Grey",
+           color = "white", vjust = -28, hjust = 1.1,
+           lineheight = 0.9, size = 4)+
+           theme_dark()
 ```
 
 

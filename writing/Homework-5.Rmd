@@ -2,7 +2,7 @@
 title: 'Homework #5'
 author: "Becky Fultz"
 date: "2026-11-30"
-output: word_document
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
@@ -16,6 +16,7 @@ library(tidyverse)
 library(broom)
 library(purrr)
 library(lubridate)
+library(tinytex)
 
 homicides <- read_csv("C:/Users/Owner/OneDrive - Colostate/ERHS 535/Homeworks/Homework #5/Homework-5/data/homicide-data.csv")
 ```

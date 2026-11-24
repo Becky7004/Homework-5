@@ -24,6 +24,12 @@ homicides <- read_csv("C:/Users/Owner/OneDrive - Colostate/ERHS 535/Homeworks/Ho
 ```{r}
 baltimore_homicides <- homicides |> 
   filter(city == "Baltimore") |> 
-  mutate(reported_date =ymd(reported_date))
+  mutate(reported_date =ymd(reported_date)) |> 
+  mutate(reported_date_month = floor_date(ymd(reported_date), unit = "month"))
+
+
+ggplot(baltimore_homicides, aes(reported_date_month))+
+  geom_bar()
+   
 ```
 

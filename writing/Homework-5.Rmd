@@ -36,6 +36,7 @@ monthly_homicides <- baltimore_homicides |>
   count(reported_date_month, season)
 ```
 
+## The re-created plot
 ```{r, fig.width = 10, fig.height = 2.5}
 ggplot(monthly_homicides, aes(x = reported_date_month, y = n))+
   geom_col(aes(fill = season))+

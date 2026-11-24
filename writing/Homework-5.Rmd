@@ -15,7 +15,15 @@ library(readr)
 library(tidyverse)
 library(broom)
 library(purrr)
+library(lubridate)
 
 homicides <- read_csv("C:/Users/Owner/OneDrive - Colostate/ERHS 535/Homeworks/Homework #5/Homework-5/data/homicide-data.csv")
+```
+
+## Re-creating the graph - Option 2
+```{r}
+baltimore_homicides <- homicides |> 
+  filter(city == "Baltimore") |> 
+  mutate(reported_date =ymd(reported_date))
 ```
 

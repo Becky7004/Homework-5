@@ -25,12 +25,15 @@ homicides <- read_csv("C:/Users/Owner/OneDrive - Colostate/ERHS 535/Homeworks/Ho
 baltimore_homicides <- homicides |> 
   filter(city == "Baltimore") |> 
   mutate(reported_date =ymd(reported_date)) |> 
-  mutate(reported_date_month = floor_date(ymd(reported_date), unit = "month")) |> 
+  mutate(reported_date_month = floor_date(ymd(reported_date), 
+                                          unit = "month")) |> 
   mutate(reported_date_str = str_sub(reported_date_month, 6, 7),
          season = case_when(reported_date_str %in% 
-                              c("11", "12", "01", "02", "03", "04") ~ "Winter", 
+                              c("11", "12", "01", "02", "03", "04")
+                            ~ "Winter", 
                             reported_date_str %in% 
-                              c("05", "06", "07", "08", "09", "10")~ "Summer"))
+                              c("05", "06", "07", "08", "09", "10")
+                            ~ "Summer"))
 
 monthly_homicides <- baltimore_homicides |> 
   count(reported_date_month, season)
@@ -44,15 +47,18 @@ ggplot(monthly_homicides, aes(x = reported_date_month, y = n))+
       "Summer" = "gray"))+
   geom_smooth(method = "loess", span = 0.12, se = FALSE, 
               color = "blue",linewidth = 1.2)+
-  geom_vline(xintercept = as.Date("2015-04-01"), linetype = "dashed", 
+  geom_vline(xintercept = as.Date("2015-04-01"), 
+             linetype = "dashed", 
              color = "red",linewidth = 1)+
   annotate("text", x = as.Date("2015-04-01"), 
            y = 40, label = "Arrest of\nFreddie Gray",
            color = "white", hjust = 1,
            lineheight = 0.9, size = 3)+
-  labs(x = "Date", y ="Monthly homicides", title = "Homicides in Baltimore, MD")+
+  labs(x = "Date", y ="Monthly homicides", 
+       title = "Homicides in Baltimore, MD")+
   theme_dark()+
-  theme(legend.position = "bottom", legend.title = element_blank())
+  theme(legend.position = "bottom", 
+        legend.title = element_blank())
 ```
 
 
